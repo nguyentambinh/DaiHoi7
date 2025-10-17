@@ -1,0 +1,75 @@
+﻿@model DaiHoi7.Models.ThongDiepModel
+@{
+    ViewBag.Title = "Thông điệp gửi Đại hội";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/Content/thongdiep.css" />
+}
+
+<div class="container py-5">
+    <h2 class="text-start fw-bold mb-4">THÔNG ĐIỆP GỬI ĐẠI HỘI</h2>
+
+    <div class="row align-items-start">
+
+        <!-- CỘT FORM -->
+        <div class="col-md-4">
+            <div class="form-card-wrapper w-100">
+                @using (Html.BeginForm("ThongDiep", "Home", FormMethod.Post, new { id = "formThongDiep", @class = "card p-4 shadow" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3 w-100">
+                        @Html.LabelFor(m => m.TenNguoiGui, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(m => m.TenNguoiGui, new { @class = "form-control", id = "TenNguoiGui" })
+                        @Html.ValidationMessageFor(m => m.TenNguoiGui, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3 w-100">
+                        @Html.LabelFor(m => m.ChucVu, new { @class = "form-label fw-bold" })
+                        @Html.TextAreaFor(m => m.ChucVu, new { @class = "form-control", id = "ChucVu" })
+                        @Html.ValidationMessageFor(m => m.ChucVu, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3 w-100">
+                        @Html.LabelFor(m => m.NoiDung, new { @class = "form-label fw-bold" })
+                        @Html.TextAreaFor(m => m.NoiDung, new { @class = "form-control", id = "NoiDung" })
+                        @Html.ValidationMessageFor(m => m.NoiDung, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3 w-100">
+                        @Html.LabelFor(m => m.HinhAnh, new { @class = "form-label fw-bold" })
+                        <input type="file" id="HinhAnh" name="HinhAnh" class="form-control" accept="image/*" />
+                        @Html.ValidationMessageFor(m => m.HinhAnh, "", new { @class = "text-danger" })
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- CỘT CANVAS -->
+        <div class="col-md-8 d-flex flex-column align-items-center">
+            <div class="canvas-container mb-3">
+                <canvas id="previewCanvas" width="3000" height="2000"></canvas>
+            </div>
+
+            <!-- NÚT DƯỚI CANVAS -->
+            <div class="canvas-buttons">
+                <!-- Nút tải ảnh nhỏ hơn (bên trái) -->
+                <button type="button" id="btnTaiAnh">
+                    ⬇️ Tải ảnh
+                </button>
+
+                <!-- Nút gửi thông điệp to hơn (bên phải) -->
+                <button type="submit" form="formThongDiep" class="btn-gui">
+                    📩 Gửi thông điệp
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/thongdiep.js"></script>
+}

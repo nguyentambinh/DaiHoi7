@@ -1,0 +1,246 @@
+﻿:root {
+    --blue-light: #3CA9E5; /* xanh sáng – nhấn nhá nhẹ */
+    --blue-normal: #2B78D0; /* xanh vừa – nền phụ */
+    --blue-dark: #113C89; /* xanh đậm – nền chính */
+    --red-strong: #E1251B; /* đỏ mạnh – nổi bật logo */
+    --orange-bright: #F7941E; /* cam sáng – điểm nhấn hover */
+    --text-light: #fff;
+}
+
+.layout-container {
+    max-width: 1100px; 
+    margin: 0 auto;
+    padding: 0 15px; 
+}
+
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* ============================
+   Header (Logo + Tiêu đề)
+============================ */
+header {
+    background-color: white;
+    color: var(--text-light);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 15px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .header-left img {
+        height: 60px;
+    }
+
+.header-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    color: var(--orange-bright);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .header-left,
+    .header-container {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header-title {
+        white-space: normal;
+    }
+}
+
+/* ============================
+   Navbar (Thanh điều hướng)
+============================ */
+.navbar {
+    background-color: var(--blue-normal) !important;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    padding: 10px 15px !important;
+    text-transform: uppercase;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: #fff !important;
+        border-radius: 4px;
+    }
+
+    .navbar-nav .nav-link.active {
+        background-color: white;
+        border-radius: 4px;
+        color: var(--blue-dark) !important; 
+        opacity: 1;
+    }
+
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin-top: 0;
+        background-color: var(--blue-normal);
+        border: none;
+        border-radius: 0;
+    }
+
+        .navbar .dropdown-menu .dropdown-item {
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+            .navbar .dropdown-menu .dropdown-item:hover {
+                background-color: rgba(255,255,255,0.2);
+                color: #fff;
+            }
+}
+
+/* ============================
+   Thông điệp gửi Đại hội
+============================ */
+.guiloi-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: #f5f7fb;
+    flex-wrap: wrap;
+}
+
+/* === Canvas 3000x2000 scale === */
+.canvas-area {
+    position: relative;
+    width: min(90vw, 1500px);
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    background: #fff;
+}
+
+.bg-template {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === Frames giữ tỉ lệ gốc === */
+.photo-frame {
+    position: absolute;
+    border: 2px dashed rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.5);
+    font-weight: 600;
+    overflow: hidden;
+}
+
+    .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* Vị trí và tỉ lệ theo ảnh 3000x2000 */
+.frame-large {
+    width: 41.3%;
+    height: 41%;
+    top: 35%;
+    left: 10%;
+}
+
+.frame-small {
+    width: 15%;
+    height: 30.5%;
+    top: 35%;
+    left: 62%;
+}
+
+/* === Form bên phải === */
+.form-area {
+    width: 320px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    .form-area h4 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+.photo-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+    .photo-upload img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+#uploadInput {
+    margin-top: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
